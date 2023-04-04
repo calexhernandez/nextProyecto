@@ -54,8 +54,6 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      
-
       <div className="relative  px-6 pt-14 lg:px-8">
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <svg className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
@@ -72,6 +70,7 @@ export default function Home() {
             </defs>
           </svg>
         </div>
+        {/* inicio parte 1 **********************************************/}
         <div className="mx-auto max-w-2xl lg:text-center">
           <div className="text-center">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Diagn&oacute;stico y Administraci&oacute;n de Radiolog&iacute;a a tu Alcance</h2>
@@ -89,7 +88,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
+        {/* fin parte 1 **********************************************/}
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {features.map((feature) => (
@@ -111,32 +110,37 @@ export default function Home() {
           </dl>
         </div>
 
-
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-          <div className="sm:max-w-lg">
-            <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Inteligencia Artificial (IA)
-            </h1>
-            <p className="mt-4 text-xl text-gray-500">
-            Al suscribirte a nuestros servicios, tendrás acceso a diversas herramientas de Inteligencia Artificial capaces de alertar a los especialistas sobre una lesión encontrada en una imagen médica. Promed cuenta con Inteligencia Artificial en el diagnóstico de: cáncer de pulmón, Covid 19-RX, Covid 19-TAC, cáncer de cerebro, cáncer de mama y cáncer de próstata.
-            </p>
-          </div>
-          <div>
-            <div className="mt-10">
-              {/* Decorative image grid */}
-              <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
-              >
-                Saber mas
-              </a>
+        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+          <div className="relative pl-16">
+            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+              <div className="sm:max-w-lg">
+                <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Inteligencia Artificial (IA)</h1>
+                <p className="mt-4 text-xl text-gray-500">
+                  Al suscribirte a nuestros servicios, tendrás acceso a diversas herramientas de Inteligencia Artificial capaces de alertar a los especialistas sobre una lesión encontrada en una
+                  imagen médica. Promed cuenta con Inteligencia Artificial en el diagnóstico de: cáncer de pulmón, Covid 19-RX, Covid 19-TAC, cáncer de cerebro, cáncer de mama y cáncer de próstata.
+                </p>
+              </div>
+              <div>
+                <div className="mt-10">
+                  {/* Decorative image grid */}
+                  <a href="#" className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">
+                    Saber mas
+                  </a>
+                </div>
+              </div>
             </div>
-            
           </div>
-        
-        </div>
 
-        
+          <div className="relative pl-16">
+
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+              <div className="sm:max-w-lg">
+                <img src='/public/IA.jpeg'/>  
+              </div>
+            </div>
+          </div>
+          
+        </dl>
       </div>
     </div>
   );

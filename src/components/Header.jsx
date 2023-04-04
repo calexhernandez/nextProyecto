@@ -6,9 +6,14 @@ import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Inicio', href: '/inicio', current: true },
+  { name: 'Dashboard', href: '/dashboard', current: false },
   { name: 'Productos', href: '/dashboard/products/', current: false },
   { name: 'Ventas', href: '#', current: false },
+  { name: 'Quienes Somos', href: '/quienesSomos', current: false },
+  { name: 'Productos Principales', href: '/productosPrincipales', current: false },
+  { name: 'Contactanos', href: '/contactanos', current: false },
+  { name: 'Plataforma', href: '/accesoAlaPlataforma', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },

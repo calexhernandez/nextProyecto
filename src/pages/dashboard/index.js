@@ -1,25 +1,45 @@
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-];
-
 import endPoints from '@services/api';
 import useFetch from '@hooks/useFetch';
+import Paginate from '@hooks/Paginate';
+import Pagination from '@components/pagination';
+import { Chart } from '@common/Chart';
 
 const PRODUCT_LIMIT = 5;
-const PRODUCT_OFFSET = 5;
+const PRODUCT_OFFSET = 0;
 
 export default function Dashboard() {
-  const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
-  console.log(products);
+  const allProducts = useFetch(endPoints.products.getProducts(0, 0));
+  const totalProducts = allProducts.length;
+  const paginate = Paginate(PRODUCT_LIMIT, PRODUCT_OFFSET, totalProducts);
+  const handleNext = paginate.handleNext;
+  const handlePrev = paginate.handlePrev;
+  const offset = paginate.newOffset;
+  //const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
+  const products = allProducts.slice(offset, offset + PRODUCT_LIMIT);
+
+  const categoryName = products?.map((product) => product.category);
+  const categorycount = categoryName?.map((category) => category.name);
+
+  //console.log(categoryName);
+  //console.log(categorycount);
+
+  const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+
+  const data = {
+    datasets: [
+      {
+        label: 'Categories',
+        data: countOccurrences(categorycount),
+        borderWidth: 2,
+        backgroundColor: ['#f87979', '#f8e979', '#f83978', '#c8e979', '#a8e679'],
+      },
+    ],
+  };
+
+  //console.log(products);
   return (
     <>
+      <Chart classname="mb-8 mt-2" ChartData={data} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -78,6 +98,7 @@ export default function Dashboard() {
                   ))}
                 </tbody>
               </table>
+              <Pagination limit={PRODUCT_LIMIT} offset={offset} total={totalProducts} handlePrev={handlePrev} handleNext={handleNext}></Pagination>
             </div>
           </div>
         </div>

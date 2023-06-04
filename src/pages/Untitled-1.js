@@ -1,34 +1,37 @@
-import endPoints from '@services/api';
+/* import endPoints from '@services/api';
 import useFetch from '@hooks/useFetch';
 import Paginate from '@hooks/Paginate';
 import Pagination from '@components/pagination';
 import { Chart } from '@common/Chart';
-
+ */
 import { signIn, useSession } from 'next-auth/react';
 import ConnectButton from '@components/ConnectButton';
 import MainContainer from '@components/MainContainer';
 import { Card } from '@components/Card';
 
+/* 
 const PRODUCT_LIMIT = 5;
 const PRODUCT_OFFSET = 0;
-
+ */
 export default function Dashboard() {
+  const { data1, status } = useSession();
+  /* 
   const allProducts = useFetch(endPoints.products.getProducts(0, 0));
   const totalProducts = allProducts.length;
   const paginate = Paginate(PRODUCT_LIMIT, PRODUCT_OFFSET, totalProducts);
   const handleNext = paginate.handleNext;
   const handlePrev = paginate.handlePrev;
-  const offset = paginate.newOffset;
+  const offset = paginate.newOffset; */
   //const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
-  const products = allProducts.slice(offset, offset + PRODUCT_LIMIT);
+  /* const products = allProducts.slice(offset, offset + PRODUCT_LIMIT);
 
   const categoryName = products?.map((product) => product.category);
   const categorycount = categoryName?.map((category) => category.name);
+ */
+  //console.log(categoryName);
+  //console.log(categorycount);
 
-  console.log(categoryName);
-  console.log(categorycount);
-
-  const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+  /* const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
 
   const data = {
     datasets: [
@@ -39,11 +42,31 @@ export default function Dashboard() {
         backgroundColor: ['#f87979', '#f8e979', '#f83978', '#c8e979', '#a8e679'],
       },
     ],
-  };
-
+  }; */
+  
   //console.log(products);
-  return (
+  return status === 'authenticated' ? (
+    <MainContainer>
+      <Card userProfile={data1.userProfile} />
+    </MainContainer>
+  ) : (
+    <MainContainer>
+      <ConnectButton onClick={() => signIn("github")}>
+        Login with Github
+      </ConnectButton>
+    </MainContainer>
+  );
+}
+
+
+
+
+
+
+
+{/* 
     <>
+
       <Chart classname="mb-8 mt-2" ChartData={data} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -108,6 +131,4 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </>
-  );
-}
+    </> */}

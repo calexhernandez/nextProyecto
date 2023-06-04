@@ -6,19 +6,18 @@ import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 
 const navigation = [
-  { name: 'Inicio', href: '/inicio', current: true },
+  { name: 'Inicio', href: '/home', current: true },
   { name: 'Dashboard', href: '/dashboard', current: false },
-  { name: 'Productos', href: '/dashboard/products/', current: false },
-  { name: 'Ventas', href: '#', current: false },
   { name: 'Quienes Somos', href: '/quienesSomos', current: false },
   { name: 'Productos Principales', href: '/productosPrincipales', current: false },
   { name: 'Contactanos', href: '/contactanos', current: false },
-  { name: 'Plataforma', href: '/accesoAlaPlataforma', current: false },
+  { name: 'Plataforma', href: '/loginApp', current: false },
+  { name: 'Demo', href: '/calendario', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign in', href: '/loginApp' },
 ];
 
 function classNames(...classes) {
